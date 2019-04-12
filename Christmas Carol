@@ -1,0 +1,105 @@
+//A piezo buzzer is required in this project
+int buzz=13;
+void setup() {
+  pinMode(buzz,OUTPUT);
+
+}
+
+void loop() {
+for(int i=0;i<=1;i++){
+//T MA
+tone(buzz,337.5,500);
+delay(500);
+
+//NI
+tone(buzz,450,500);
+delay(500);
+
+//NI
+tone(buzz,450,800);
+delay(800);
+
+//k re
+tone(buzz,496,250);
+delay(250);
+
+//NI
+tone(buzz,450,250);
+delay(250);
+
+//K NI
+tone(buzz,432,250);
+delay(250);
+
+//K NI
+tone(buzz,432,500);
+delay(500);
+
+//T MA
+tone(buzz,337.5,500);
+delay(500);  
+}
+
+//T MA
+tone(buzz,337.5,500);
+delay(500);
+
+//k ga
+tone(buzz,568,500);
+delay(500);
+
+//k ga
+tone(buzz,568,800);
+delay(800);
+
+//ga
+tone(buzz,600,250);
+delay(250);
+
+//k ga
+tone(buzz,568,250);
+delay(250);
+
+//k re
+tone(buzz,496,250);
+delay(250);
+
+//NI
+tone(buzz,450,500);
+delay(500);
+
+//ga
+tone(buzz,600,500);
+delay(500);
+
+
+
+//T MA
+tone(buzz,337.5,250);
+delay(250);
+
+//T MA
+tone(buzz,337.5,250);
+delay(250);
+
+//K DHA
+tone(buzz,384,500);
+delay(500);
+
+//k re
+tone(buzz,496,500);
+delay(500);
+
+//K NI
+tone(buzz,432,500);
+delay(500);
+
+//K NI
+tone(buzz,432,250);
+delay(250);
+
+//NI
+tone(buzz,450,800);
+delay(800);
+
+}
