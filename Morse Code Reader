@@ -1,0 +1,77 @@
+int inputPin = 13;
+int buzz = 12;
+String code = "";
+long signalLen,t1,t2;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(inputPin,INPUT_PULLUP);
+  pinMode(buzz,OUTPUT);
+}
+
+char audio()
+{
+  if (signalLen < 300 && signalLen > 50)
+  {
+    return '.';
+  }
+  else if (signalLen > 300)
+  {
+    return '-'; 
+  }
+}
+
+void morse()
+{
+  static String letters[] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-",
+                             ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", "A"};
+  int i = 0;
+  if (code == ".-.-.-")
+  {
+    Serial.print("."); 
+  }
+  else
+  {
+    while (letters[i] != "A")
+    {
+      if (letters[i] == code)
+      {
+        Serial.print(char('A' + i));
+        break;
+      }
+      i++;
+    }
+    if (letters[i] == "A")
+    {
+      Serial.println("");
+    }
+  }
+  code = ""; 
+}
+
+void loop()
+{
+  mainLoop:
+  while (digitalRead(inputPin) == HIGH) 
+  {}
+  t1 = millis();                            
+  digitalWrite(buzz, HIGH);
+  while (digitalRead(inputPin) == LOW) 
+  {}
+  t2 = millis();                            
+  digitalWrite(buzz, LOW); 
+  signalLen = t2 - t1;                     
+  if (signalLen > 50)                      
+  {
+    code += audio();                       
+  }
+  while ((millis() - t2) < 500)      
+  {     
+    if (digitalRead(inputPin) == LOW)
+    {
+      goto mainLoop;
+    }
+  }
+  morse();                          
+}
