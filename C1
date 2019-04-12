@@ -1,3 +1,6 @@
+/* This line follower robot is capable of 
+following a black line of any pattern 
+provided the line is surrounded by a bright background (white) */
 void setup() {
 
 pinMode(2,OUTPUT);
