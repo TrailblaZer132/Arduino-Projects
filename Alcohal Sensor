@@ -1,0 +1,25 @@
+int buzz=13;
+void setup() {
+  // put your setup code here, to run once:
+ pinMode(3,INPUT);
+ pinMode(13,OUTPUT);
+ Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int v;
+  v=digitalRead(3);
+  
+  Serial.println(v);
+  if(v>200)
+  {
+    digitalWrite(buzz,HIGH);
+    delay(200);
+    digitalWrite(buzz,LOW);
+  }
+  else
+  {
+    digitalWrite(buzz,LOW);
+  }
+}
